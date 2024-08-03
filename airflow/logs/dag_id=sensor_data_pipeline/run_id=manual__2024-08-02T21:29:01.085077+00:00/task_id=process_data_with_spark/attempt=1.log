@@ -1,0 +1,26 @@
+[2024-08-02T21:29:02.828+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: sensor_data_pipeline.process_data_with_spark manual__2024-08-02T21:29:01.085077+00:00 [queued]>
+[2024-08-02T21:29:02.834+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: sensor_data_pipeline.process_data_with_spark manual__2024-08-02T21:29:01.085077+00:00 [queued]>
+[2024-08-02T21:29:02.834+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 2
+[2024-08-02T21:29:02.849+0000] {taskinstance.py:1380} INFO - Executing <Task(SparkSubmitOperator): process_data_with_spark> on 2024-08-02 21:29:01.085077+00:00
+[2024-08-02T21:29:02.854+0000] {standard_task_runner.py:57} INFO - Started process 963 to run task
+[2024-08-02T21:29:02.856+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'sensor_data_pipeline', 'process_data_with_spark', 'manual__2024-08-02T21:29:01.085077+00:00', '--job-id', '205', '--raw', '--subdir', 'DAGS_FOLDER/sensor_data_pipeline_dag.py', '--cfg-path', '/tmp/tmpnk20uw4_']
+[2024-08-02T21:29:02.858+0000] {standard_task_runner.py:85} INFO - Job 205: Subtask process_data_with_spark
+[2024-08-02T21:29:02.897+0000] {task_command.py:415} INFO - Running <TaskInstance: sensor_data_pipeline.process_data_with_spark manual__2024-08-02T21:29:01.085077+00:00 [running]> on host 8ded6b713b13
+[2024-08-02T21:29:02.961+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='sensor_data_pipeline' AIRFLOW_CTX_TASK_ID='process_data_with_spark' AIRFLOW_CTX_EXECUTION_DATE='2024-08-02T21:29:01.085077+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-08-02T21:29:01.085077+00:00'
+[2024-08-02T21:29:02.968+0000] {base.py:73} INFO - Using connection ID 'spark_default' for task execution.
+[2024-08-02T21:29:02.969+0000] {spark_submit.py:403} INFO - Spark-Submit cmd: spark-submit --master spark://spark-master:7077 --name arrow-spark --deploy-mode client /opt/***/dags/src/process_data.py
+[2024-08-02T21:29:03.089+0000] {spark_submit.py:579} INFO - /home/***/.local/lib/python3.8/site-packages/pyspark/bin/load-spark-env.sh: line 68: ps: command not found
+[2024-08-02T21:29:04.761+0000] {spark_submit.py:579} INFO - /usr/local/bin/python: can't open file '/opt/***/dags/src/process_data.py': [Errno 2] No such file or directory
+[2024-08-02T21:29:04.776+0000] {spark_submit.py:579} INFO - 24/08/02 21:29:04 INFO ShutdownHookManager: Shutdown hook called
+[2024-08-02T21:29:04.778+0000] {spark_submit.py:579} INFO - 24/08/02 21:29:04 INFO ShutdownHookManager: Deleting directory /tmp/spark-b0ef4b13-8cb0-4a9f-bcc4-107a313c8b02
+[2024-08-02T21:29:04.819+0000] {taskinstance.py:1935} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/apache/spark/operators/spark_submit.py", line 174, in execute
+    self._hook.submit(self.application)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/apache/spark/hooks/spark_submit.py", line 505, in submit
+    raise AirflowException(
+airflow.exceptions.AirflowException: Cannot execute: spark-submit --master spark://spark-master:7077 --name arrow-spark --deploy-mode client /opt/***/dags/src/process_data.py. Error code is: 2.
+[2024-08-02T21:29:04.822+0000] {taskinstance.py:1398} INFO - Marking task as UP_FOR_RETRY. dag_id=sensor_data_pipeline, task_id=process_data_with_spark, execution_date=20240802T212901, start_date=20240802T212902, end_date=20240802T212904
+[2024-08-02T21:29:04.838+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 205 for task process_data_with_spark (Cannot execute: spark-submit --master spark://spark-master:7077 --name arrow-spark --deploy-mode client /opt/***/dags/src/process_data.py. Error code is: 2.; 963)
+[2024-08-02T21:29:04.874+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2024-08-02T21:29:04.887+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

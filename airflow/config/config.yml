@@ -1,0 +1,14 @@
+kafka:
+  bootstrap_servers: 'kafka:9092'
+  topic: 'sensor_data'
+
+spark:
+  app_name: 'SensorDataProcessor'
+  master: 'spark://spark-master:7077'
+
+postgres:
+  host: 'postgres'
+  port: 5432
+  database: 'sensor_data'
+  user: 'postgres'
+  password: 'postgres'

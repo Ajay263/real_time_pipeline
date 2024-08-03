@@ -1,0 +1,9 @@
+apache-airflow==2.7.1
+psycopg2-binary
+PyYAML
+apache-airflow-providers-docker==2.1.0 
+apache-airflow-providers-mongo
+pandas
+apache-airflow-providers-apache-spark==4.1.0
+kafka-python==2.0.2
+pyspark==3.4.1

@@ -1,0 +1,35 @@
+[2024-08-02T09:44:31.114+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: sensor_data_pipeline.spark_streaming_job scheduled__2024-08-01T00:00:00+00:00 [queued]>
+[2024-08-02T09:44:31.121+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: sensor_data_pipeline.spark_streaming_job scheduled__2024-08-01T00:00:00+00:00 [queued]>
+[2024-08-02T09:44:31.121+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 2
+[2024-08-02T09:44:31.136+0000] {taskinstance.py:1380} INFO - Executing <Task(SparkSubmitOperator): spark_streaming_job> on 2024-08-01 00:00:00+00:00
+[2024-08-02T09:44:31.143+0000] {standard_task_runner.py:57} INFO - Started process 474 to run task
+[2024-08-02T09:44:31.147+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'sensor_data_pipeline', 'spark_streaming_job', 'scheduled__2024-08-01T00:00:00+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/sensor_data_pipeline.py', '--cfg-path', '/tmp/tmp4x2779gx']
+[2024-08-02T09:44:31.149+0000] {standard_task_runner.py:85} INFO - Job 4: Subtask spark_streaming_job
+[2024-08-02T09:44:31.192+0000] {task_command.py:415} INFO - Running <TaskInstance: sensor_data_pipeline.spark_streaming_job scheduled__2024-08-01T00:00:00+00:00 [running]> on host 94bd5b7a2680
+[2024-08-02T09:44:31.267+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='sensor_data_pipeline' AIRFLOW_CTX_TASK_ID='spark_streaming_job' AIRFLOW_CTX_EXECUTION_DATE='2024-08-01T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-08-01T00:00:00+00:00'
+[2024-08-02T09:44:31.281+0000] {spark_submit.py:273} INFO - Could not load connection string spark_default, defaulting to yarn
+[2024-08-02T09:44:31.282+0000] {spark_submit.py:403} INFO - Spark-Submit cmd: spark-submit --master yarn --name arrow-spark --verbose /opt/***/dags/src/processors/sensor_data_processor.py
+[2024-08-02T09:44:31.552+0000] {spark_submit.py:579} INFO - /home/***/.local/lib/python3.8/site-packages/pyspark/bin/load-spark-env.sh: line 68: ps: command not found
+[2024-08-02T09:44:38.318+0000] {spark_submit.py:579} INFO - Using properties file: null
+[2024-08-02T09:44:38.478+0000] {spark_submit.py:579} INFO - Exception in thread "main" org.apache.spark.SparkException: When running with master 'yarn' either HADOOP_CONF_DIR or YARN_CONF_DIR must be set in the environment.
+[2024-08-02T09:44:38.479+0000] {spark_submit.py:579} INFO - at org.apache.spark.deploy.SparkSubmitArguments.error(SparkSubmitArguments.scala:634)
+[2024-08-02T09:44:38.479+0000] {spark_submit.py:579} INFO - at org.apache.spark.deploy.SparkSubmitArguments.validateSubmitArguments(SparkSubmitArguments.scala:274)
+[2024-08-02T09:44:38.479+0000] {spark_submit.py:579} INFO - at org.apache.spark.deploy.SparkSubmitArguments.validateArguments(SparkSubmitArguments.scala:234)
+[2024-08-02T09:44:38.479+0000] {spark_submit.py:579} INFO - at org.apache.spark.deploy.SparkSubmitArguments.<init>(SparkSubmitArguments.scala:119)
+[2024-08-02T09:44:38.479+0000] {spark_submit.py:579} INFO - at org.apache.spark.deploy.SparkSubmit$$anon$2$$anon$3.<init>(SparkSubmit.scala:1055)
+[2024-08-02T09:44:38.479+0000] {spark_submit.py:579} INFO - at org.apache.spark.deploy.SparkSubmit$$anon$2.parseArguments(SparkSubmit.scala:1055)
+[2024-08-02T09:44:38.480+0000] {spark_submit.py:579} INFO - at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:85)
+[2024-08-02T09:44:38.480+0000] {spark_submit.py:579} INFO - at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:1072)
+[2024-08-02T09:44:38.480+0000] {spark_submit.py:579} INFO - at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:1081)
+[2024-08-02T09:44:38.480+0000] {spark_submit.py:579} INFO - at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)
+[2024-08-02T09:44:38.512+0000] {taskinstance.py:1935} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/apache/spark/operators/spark_submit.py", line 174, in execute
+    self._hook.submit(self.application)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/apache/spark/hooks/spark_submit.py", line 505, in submit
+    raise AirflowException(
+airflow.exceptions.AirflowException: Cannot execute: spark-submit --master yarn --name arrow-spark --verbose /opt/***/dags/src/processors/sensor_data_processor.py. Error code is: 1.
+[2024-08-02T09:44:38.515+0000] {taskinstance.py:1398} INFO - Marking task as UP_FOR_RETRY. dag_id=sensor_data_pipeline, task_id=spark_streaming_job, execution_date=20240801T000000, start_date=20240802T094431, end_date=20240802T094438
+[2024-08-02T09:44:38.536+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 4 for task spark_streaming_job (Cannot execute: spark-submit --master yarn --name arrow-spark --verbose /opt/***/dags/src/processors/sensor_data_processor.py. Error code is: 1.; 474)
+[2024-08-02T09:44:38.552+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2024-08-02T09:44:38.565+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,6 @@
+apache-airflow==2.7.1
+apache-airflow-providers-apache-spark
+pyspark==3.3.3
+kafka-python
+psycopg2-binary
+PyYAML
